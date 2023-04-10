@@ -1,0 +1,80 @@
+{
+  "name": "@nyxb/nyxi",
+  "version": "0.0.11",
+  "packageManager": "pnpm@8.0.0",
+  "description": "Use the right package manager",
+  "author": "Dennis Ollhoff <contact@nyxb.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/nyxb/nyxi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyxb/nyxi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nyxb/nyxi/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "nyxi": "bin/nyxi.mjs",
+    "nyxci": "bin/nyxci.mjs",
+    "nyxr": "bin/nyxr.mjs",
+    "nyxu": "bin/nyxu.mjs",
+    "nyxlx": "bin/nyxlx.mjs",
+    "nyxa": "bin/nyxa.mjs",
+    "nyxun": "bin/nyxun.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "dev": "esno src/commands/nyxi.ts",
+    "nyxr": "esno src/commands/nyxr.ts",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "release": "bumpp && npm publish",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@nyxb/eslint-config": "^0.0.9",
+    "@tyck/prompts": "^0.0.2",
+    "@types/ini": "^1.3.31",
+    "@types/node": "^18.15.11",
+    "@types/which": "^3.0.0",
+    "bumpp": "^9.0.0",
+    "chalk": "^5.2.0",
+    "eslint": "^8.37.0",
+    "esno": "^0.16.3",
+    "execa": "^7.1.1",
+    "fast-glob": "^3.2.12",
+    "find-up": "^6.3.0",
+    "fzf": "^0.5.1",
+    "gradient-string": "^2.0.2",
+    "ini": "^4.0.0",
+    "kleur": "^4.1.5",
+    "ora": "^6.3.0",
+    "rimraf": "^4.4.1",
+    "terminal-link": "^3.0.0",
+    "typescript": "^5.0.2",
+    "unbuild": "^1.1.2",
+    "vitest": "^0.29.8",
+    "which": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@nyxb"
+  },
+  "engines": {
+    "node": ">=18.15.0"
+  }
+}
