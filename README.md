@@ -1,6 +1,6 @@
 <p align="center">
-<img src="https://user-images.githubusercontent.com/8291514/213727234-cda046d6-28c6-491a-b284-b86c5cede25d.png#gh-light-mode-only">
-<img src="https://raw.githubusercontent.com/nyxb/nyxi/main/.github/assets/background_light.png#gh-dark-mode-only">
+<img src="https://raw.githubusercontent.com/nyxb/nyxi/main/.github/assets/background_light.png#gh-light-mode-only">
+<img src="https://user-images.githubusercontent.com/8291514/213727234-cda046d6-28c6-491a-b284-b86c5cede25d.png#gh-dark-mode-only">
 </p>
 
 ---
