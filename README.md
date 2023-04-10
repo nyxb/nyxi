@@ -30,7 +30,7 @@
   <td valign="top">
     <h3>Documentation</h3>
     <p>
-      We highly recommend you take a look at <a href="https://github.com/nyxb/nyxy/tree/main/docs/commands">the documentation</a> to level up.
+      We highly recommend you take a look at <a href="https://github.com/nyxb/nyxi/tree/main/docs/commands">the documentation</a> to level up.
     </p>
   </td>
 </tr>
@@ -72,7 +72,7 @@
 <tr>
   <td width="80" align="center" valign="top">
     <br>
-    <a href="https://github.com/nyxb/tyck/blob/main/docs/getting-help.md"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/questions.png"></a>
+    <a href="https://github.com/nyxb/nyxi/blob/main/docs/getting-help.md"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/questions.png"></a>
   </td>
   <td valign="top">
     <h3>Questions</h3>
