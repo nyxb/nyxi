@@ -30,7 +30,7 @@
   <td valign="top">
     <h3>Documentation</h3>
     <p>
-      We highly recommend you take a look at <a href="https://github.com/nyxb/nyxi/tree/main/docs/commands">the documentation</a> to level up.
+      We highly recommend you take a look at <a href="https://github.com/nyxb/nyxi/tree/main/docs/commands.md">the documentation</a> to level up.
     </p>
   </td>
 </tr>
