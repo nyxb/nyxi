@@ -5,13 +5,13 @@ import { findUp } from 'find-up'
 import type { Agent } from './agents'
 import { LOCKS } from './agents'
 
-const customRcPath = process.env.NI_CONFIG_FILE
+const customRcPath = process.env.NYXI_CONFIG_FILE
 
 const home = process.platform === 'win32'
   ? process.env.USERPROFILE
   : process.env.HOME
 
-const defaultRcPath = path.join(home || '~/', '.nirc')
+const defaultRcPath = path.join(home || '~/', '.nyxirc')
 
 const rcPath = customRcPath || defaultRcPath
 

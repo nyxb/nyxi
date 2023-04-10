@@ -2,7 +2,6 @@
 import c from 'kleur'
 import { Fzf } from 'fzf'
 import * as tyck from '@tyck/prompts'
-import { nyxGradient, nyxRed } from '../gradient'
 import { dump, load } from '../storage'
 import { parseNyxr } from '../parse'
 import { getPackageJSON } from '../fs'
@@ -70,14 +69,14 @@ runCli(async (agent, args, ctx) => {
 
     try {
       const result = (await tyck.select<{ value: string; label: string }[], string>({
-        message: nyxGradient('script to run'),
+        message: 'script to run',
         options: choices.map(({ title, value }) => ({
           label: title,
           value,
         })),
       })) as string
       if (tyck.isCancel(result)) {
-        tyck.cancel(nyxRed('never mind.'))
+        tyck.cancel(c.red('never mind.'))
         process.exit(0)
       }
       if (!result)
