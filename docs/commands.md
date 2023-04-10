@@ -1,4 +1,4 @@
-# ni
+# nyxi
 
 ~~*`npm i` in a pnpm project, again? Sh\*t!*~~
 
