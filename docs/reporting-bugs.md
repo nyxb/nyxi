@@ -22,7 +22,7 @@ It's important to be able to reproduce the bug reliably - in a minimal way and a
 
 Start with the node.js and add the **minimum** amount of code necessary to reproduce the bug you're experiencing.
 
-**@tnyxb/nyxi**:
+**@nyxb/nyxi**:
 
 [@nyxb/nyxi on StackBlitz](https://node.new/)
 
