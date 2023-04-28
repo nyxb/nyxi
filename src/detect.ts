@@ -7,6 +7,7 @@ import * as tyck from '@tyck/prompts'
 import type { Agent } from './agents'
 import { AGENTS, INSTALL_PAGE, LOCKS } from './agents'
 import { cmdExists } from './utils'
+import { getDefaultAgent } from './config'
 
 export interface DetectOptions {
   autoInstall?: boolean
@@ -49,6 +50,24 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
   if (!agent && lockPath)
     agent = LOCKS[path.basename(lockPath)]
 
+  // If no package manager is detected, prompt the user to choose one
+  if (!agent) {
+    const defaultAgent = await getDefaultAgent()
+    if (defaultAgent === 'prompt') {
+      agent = await tyck.select({
+        message: 'Please choose a package manager:',
+        options: [
+          { value: 'pnpm', label: 'pnpm (recommended)' },
+          { value: 'npm', label: 'npm' },
+          { value: 'yarn', label: 'yarn' },
+          { value: 'bun', label: 'bun' },
+        ],
+      }) as Agent
+    }
+    else {
+      agent = defaultAgent as Agent
+    }
+  }
   // auto install
   if (agent && !cmdExists(agent.split('@')[0])) {
     if (!autoInstall) {
