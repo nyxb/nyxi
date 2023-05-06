@@ -1,8 +1,8 @@
-/* eslint-disable no-console */
 import { resolve } from 'node:path'
 import * as tyck from '@tyck/prompts'
 import { execaCommand } from 'execa'
 import c from 'kleur'
+import { consolji } from 'consolji'
 import { version } from '../package.json'
 import type { Agent } from './agents'
 import { agents } from './agents'
@@ -28,7 +28,7 @@ export async function runCli(fn: Runner, options: DetectOptions = {}) {
   }
   catch (error) {
     if (error instanceof UnsupportedCommand)
-      console.log(c.red(`\u2717 ${error.message}`))
+      consolji.log(c.red(`\u2717 ${error.message}`))
 
     process.exit(1)
   }
@@ -43,21 +43,21 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   let command
 
   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    console.log(`@nyxb/nyxi v${version}`)
+    consolji.log(`@nyxb/nyxi v${version}`)
     return
   }
 
   if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
     const dash = c.dim('-')
-    console.log(c.green(c.bold('@nyxb/nyxi')) + c.dim(` use the right package manager v${version}\n`))
-    console.log(`nyxi   ${dash}  install`)
-    console.log(`nyxr   ${dash}  run`)
-    console.log(`nyxlx  ${dash}  execute`)
-    console.log(`nyxu   ${dash}  upgrade`)
-    console.log(`nyxun  ${dash}  uninstall`)
-    console.log(`nyxci  ${dash}  clean install`)
-    console.log(`nyxa   ${dash}  agent alias`)
-    console.log(c.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
+    consolji.log(c.green(c.bold('@nyxb/nyxi')) + c.dim(` use the right package manager v${version}\n`))
+    consolji.log(`nyxi   ${dash}  install`)
+    consolji.log(`nyxr   ${dash}  run`)
+    consolji.log(`nyxlx  ${dash}  execute`)
+    consolji.log(`nyxu   ${dash}  upgrade`)
+    consolji.log(`nyxun  ${dash}  uninstall`)
+    consolji.log(`nyxci  ${dash}  clean install`)
+    consolji.log(`nyxa   ${dash}  agent alias`)
+    consolji.log(c.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
     return
   }
 
@@ -102,7 +102,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
     command = voltaPrefix.concat(' ').concat(command)
 
   if (debug) {
-    console.log(command)
+    consolji.log(command)
     return
   }
 

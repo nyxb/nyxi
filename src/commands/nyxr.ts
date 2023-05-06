@@ -1,7 +1,7 @@
-/* eslint-disable unused-imports/no-unused-vars */
 import c from 'kleur'
 import { Fzf } from 'fzf'
 import * as tyck from '@tyck/prompts'
+import { consolji } from 'consolji'
 import { dump, load } from '../storage'
 import { parseNyxr } from '../parse'
 import { getPackageJSON } from '../fs'
@@ -18,7 +18,7 @@ runCli(async (agent, args, ctx) => {
 
   if (args[0] === '-') {
     if (!storage.lastRunCommand) {
-      console.error('No last command found')
+      consolji.error('No last command found')
       process.exit(1)
     }
     args[0] = storage.lastRunCommand
@@ -56,7 +56,7 @@ runCli(async (agent, args, ctx) => {
       description: limitText(description, terminalColumns - 15),
     }))
 
-    const fzf = new Fzf(raw, {
+    const _fzf = new Fzf(raw, {
       selector: item => `${item.key} ${item.description}`,
       casing: 'case-insensitive',
     })

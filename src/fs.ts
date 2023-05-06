@@ -1,5 +1,6 @@
 import { resolve } from 'node:path'
 import fs from 'node:fs'
+import { consolji } from 'consolji'
 
 export function getPackageJSON(cwd = process.cwd()): any {
   const path = resolve(cwd, 'package.json')
@@ -11,7 +12,7 @@ export function getPackageJSON(cwd = process.cwd()): any {
       return data
     }
     catch (e) {
-      console.warn('Failed to parse package.json')
+      consolji.warn('Failed to parse package.json')
       process.exit(0)
     }
   }

@@ -4,6 +4,7 @@ import { execaCommand } from 'execa'
 import { findUp } from 'find-up'
 import terminalLink from 'terminal-link'
 import * as tyck from '@tyck/prompts'
+import { consolji } from 'consolji'
 import type { Agent } from './agents'
 import { AGENTS, INSTALL_PAGE, LOCKS } from './agents'
 import { cmdExists } from './utils'
@@ -40,7 +41,7 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
         else if (name in AGENTS)
           agent = name
         else
-          console.warn('[nyxi] Unknown packageManager:', pkg.packageManager)
+          consolji.warn('[nyxi] Unknown packageManager:', pkg.packageManager)
       }
     }
     catch {}
@@ -53,7 +54,7 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
   // If no package manager is detected, prompt the user to choose one
   if (!agent) {
     const defaultAgent = await getDefaultAgent()
-    if (defaultAgent === 'prompt') {
+    if ((defaultAgent as any) === 'prompt') {
       agent = await tyck.select({
         message: 'Please choose a package manager:',
         options: [
@@ -71,7 +72,7 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
   // auto install
   if (agent && !cmdExists(agent.split('@')[0])) {
     if (!autoInstall) {
-      console.warn(`[nyxi] Detected ${agent} but it doesn't seem to be installed.\n`)
+      consolji.warn(`[nyxi] Detected ${agent} but it doesn't seem to be installed.\n`)
 
       if (process.env.CI)
         process.exit(1)
