@@ -16,6 +16,11 @@ npm i -g <b>@nyxb/nyxi</b>
 <br>
 
 
+### `nyxinit` - init
+    
+Creates a prompt to choose between package.json and tsconfig.json and generates the file when selected.
+
+
 ### `nyxi` - install
 
 ```bash
