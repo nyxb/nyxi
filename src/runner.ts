@@ -26,9 +26,9 @@ export async function runCli(fn: Runner, options: DetectOptions = {}) {
   try {
     await run(fn, args, options)
   }
-  catch (error) {
-    if (error instanceof UnsupportedCommand)
-      consolji.log(c.red(`\u2717 ${error.message}`))
+  catch (err: any) {
+    if (err instanceof UnsupportedCommand)
+      consolji.log(c.red(`\u2717 ${err.message}`))
 
     process.exit(1)
   }

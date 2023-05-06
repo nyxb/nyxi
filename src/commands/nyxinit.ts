@@ -1,4 +1,4 @@
-import { parseNyxinit } from '../parse'
+import { createConfigFiles } from '../init'
 import { runCli } from '../runner'
 
-runCli(parseNyxinit)
+runCli(createConfigFiles)
