@@ -44,11 +44,11 @@ export async function getConfig(): Promise<Config> {
   return config
 }
 
-export async function getDefaultAgent() {
+export async function getDefaultAgent(): Promise<Agent> {
   const { defaultAgent } = await getConfig()
   if (defaultAgent === 'prompt' && process.env.CI)
     return 'npm'
-  return defaultAgent
+  return defaultAgent as Agent
 }
 
 export async function getGlobalAgent() {

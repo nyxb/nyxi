@@ -22,6 +22,9 @@ devDependencies:
   chalk:
     specifier: ^5.2.0
     version: 5.2.0
+  consolji:
+    specifier: ^0.1.1
+    version: 0.1.1
   eslint:
     specifier: ^8.37.0
     version: 8.37.0
@@ -1442,6 +1445,10 @@ packages:
 
   /consola@2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+    dev: true
+
+  /consolji@0.1.1:
+    resolution: {integrity: sha512-GQQxV7EQAD/pMrWEglmSuK5pCVmKkJmShwDG/PVOqlpPhviQ+jzGFsfpCQEjUg5I8H7wlm9hQqzh+GnsHL6nnQ==}
     dev: true
 
   /convert-source-map@1.8.0:

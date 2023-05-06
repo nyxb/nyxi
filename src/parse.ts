@@ -2,12 +2,7 @@ import type { Agent, Command } from './agents'
 import { AGENTS } from './agents'
 import { exclude } from './utils'
 import type { Runner } from './runner'
-
-export class UnsupportedCommand extends Error {
-  constructor({ agent, command }: { agent: Agent; command: Command }) {
-    super(`Command "${command}" is not support by agent "${agent}"`)
-  }
-}
+import { initPackageJson, initTsConfig } from './init'
 
 export function getCommand(
   agent: Agent,
@@ -81,4 +76,19 @@ export const parseNyxlx = <Runner>((agent, args) => {
 
 export const parseNyxa = <Runner>((agent, args) => {
   return getCommand(agent, 'agent', args)
+})
+
+export class UnsupportedCommand extends Error {
+  constructor({ agent, command }: { agent: Agent; command: string }) {
+    super(`Command "${command}" is not support by agent "${agent}"`)
+  }
+}
+export const parseNyxinit = <Runner>(async (agent, args, _ctx) => {
+  if (args[0] === 'package')
+    return initPackageJson()
+
+  if (args[0] === 'tsconfig')
+    return initTsConfig()
+
+  throw new UnsupportedCommand({ agent, command: args[0] })
 })
