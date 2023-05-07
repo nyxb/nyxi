@@ -2,6 +2,7 @@ import type { Agent, Command } from './agents'
 import { AGENTS } from './agents'
 import { exclude } from './utils'
 import type { Runner } from './runner'
+import { createConfigFiles } from './init'
 
 export class UnsupportedCommand extends Error {
   constructor({ agent, command }: { agent: Agent; command: string }) {
@@ -80,4 +81,10 @@ export const parseNyxlx = <Runner>((agent, args) => {
 
 export const parseNyxa = <Runner>((agent, args) => {
   return getCommand(agent, 'agent', args)
+})
+
+export const parseNyxinit = <Runner>(async (_agent, args) => {
+  // Check if the first entry in the args array is 'nyxinit'.
+  if (args[0] === 'nyxinit')
+    await createConfigFiles()
 })

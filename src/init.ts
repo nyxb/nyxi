@@ -62,7 +62,7 @@ export async function createConfigFiles(): Promise<any> {
     consolji.log('🎉tsconfig.json created.')
   }
 
-  const parseNyxinit = await select({
+  const createConfig = await select({
     message: 'Which file do you want to create?',
     options: [
       { value: 'package.json', label: 'Create package.json' },
@@ -70,11 +70,11 @@ export async function createConfigFiles(): Promise<any> {
     ],
   })
 
-  if (parseNyxinit === 'package.json')
+  if (createConfig === 'package.json')
     await initPackageJson()
 
-  else if (parseNyxinit === 'tsconfig.json')
+  else if (createConfig === 'tsconfig.json')
     await initTsConfig()
 
-  return parseNyxinit
+  return createConfig
 }
