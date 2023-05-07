@@ -21,10 +21,10 @@ export interface RunnerContext {
 
 export type Runner = (agent: Agent, args: string[], ctx?: RunnerContext) => Promise<string | undefined> | string | undefined
 
-export async function runCli(fn: Runner, options: DetectOptions = {}) {
+export async function runCli(fn: Runner, options: DetectOptions = {}, skipPrompt = false) {
   const args = process.argv.slice(2).filter(Boolean)
   try {
-    await run(fn, args, options)
+    await run(fn, args, options, skipPrompt)
   }
   catch (err: any) {
     if (err instanceof UnsupportedCommand)
@@ -34,7 +34,7 @@ export async function runCli(fn: Runner, options: DetectOptions = {}) {
   }
 }
 
-export async function run(fn: Runner, args: string[], options: DetectOptions = {}) {
+export async function run(fn: Runner, args: string[], options: DetectOptions = {}, skipPrompt = false) {
   const debug = args.includes(DEBUG_SIGN)
   if (debug)
     remove(args, DEBUG_SIGN)
@@ -72,7 +72,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   }
   else {
     let agent: string = await detect({ ...options, cwd }) || await getDefaultAgent()
-    if (!agents.includes(agent as Agent)) {
+    if (!agents.includes(agent as Agent) && !skipPrompt) {
       const result = await tyck.select({
         message: 'Choose the agent',
         options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
