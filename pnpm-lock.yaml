@@ -1,5 +1,10 @@
 lockfileVersion: '6.0'
 
+dependencies:
+  consolji:
+    specifier: ^0.1.1
+    version: 0.1.1
+
 devDependencies:
   '@nyxb/eslint-config':
     specifier: ^0.0.9
@@ -22,9 +27,6 @@ devDependencies:
   chalk:
     specifier: ^5.2.0
     version: 5.2.0
-  consolji:
-    specifier: ^0.1.1
-    version: 0.1.1
   eslint:
     specifier: ^8.37.0
     version: 8.37.0
@@ -1449,7 +1451,7 @@ packages:
 
   /consolji@0.1.1:
     resolution: {integrity: sha512-GQQxV7EQAD/pMrWEglmSuK5pCVmKkJmShwDG/PVOqlpPhviQ+jzGFsfpCQEjUg5I8H7wlm9hQqzh+GnsHL6nnQ==}
-    dev: true
+    dev: false
 
   /convert-source-map@1.8.0:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}

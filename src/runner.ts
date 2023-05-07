@@ -28,7 +28,7 @@ export async function runCli(fn: Runner, options: DetectOptions = {}) {
   }
   catch (err: any) {
     if (err instanceof UnsupportedCommand)
-      consolji.log(c.red(`\u2717 ${err.message}`))
+      consolji.error(c.red(` ${err.message}`))
 
     process.exit(1)
   }
@@ -43,21 +43,21 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   let command
 
   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    consolji.log(`@nyxb/nyxi v${version}`)
+    consolji.info(`@nyxb/nyxi v${version}`)
     return
   }
 
   if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
     const dash = c.dim('-')
     consolji.log(c.green(c.bold('@nyxb/nyxi')) + c.dim(` use the right package manager v${version}\n`))
-    consolji.log(`nyxi   ${dash}  install`)
-    consolji.log(`nyxr   ${dash}  run`)
-    consolji.log(`nyxlx  ${dash}  execute`)
-    consolji.log(`nyxu   ${dash}  upgrade`)
-    consolji.log(`nyxun  ${dash}  uninstall`)
-    consolji.log(`nyxci  ${dash}  clean install`)
-    consolji.log(`nyxa   ${dash}  agent alias`)
-    consolji.log(c.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
+    consolji.info(`nyxi   ${dash}  install`)
+    consolji.info(`nyxr   ${dash}  run`)
+    consolji.info(`nyxlx  ${dash}  execute`)
+    consolji.info(`nyxu   ${dash}  upgrade`)
+    consolji.info(`nyxun  ${dash}  uninstall`)
+    consolji.info(`nyxci  ${dash}  clean install`)
+    consolji.info(`nyxa   ${dash}  agent alias`)
+    consolji.info(c.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
     return
   }
 

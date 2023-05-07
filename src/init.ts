@@ -41,7 +41,7 @@ export async function createConfigFiles(): Promise<any> {
     }
 
     fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2))
-    consolji.log('🎉package.json created.')
+    consolji.log('🎉 package.json created.')
   }
 
   async function initTsConfig() {
@@ -59,7 +59,7 @@ export async function createConfigFiles(): Promise<any> {
     }
 
     fs.writeFileSync('tsconfig.json', JSON.stringify(tsconfig, null, 2))
-    consolji.log('🎉tsconfig.json created.')
+    consolji.log('🎉 tsconfig.json created.')
   }
 
   const createConfig = await select({
