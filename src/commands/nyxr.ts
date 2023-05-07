@@ -1,4 +1,4 @@
-import c from 'kleur'
+import c from '@nyxb/picocolors'
 import { Fzf } from 'fzf'
 import * as tyck from '@tyck/prompts'
 import { consolji } from 'consolji'

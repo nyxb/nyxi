@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 import * as tyck from '@tyck/prompts'
 import { execaCommand } from 'execa'
-import c from 'kleur'
+import c from '@nyxb/picocolors'
 import { consolji } from 'consolji'
 import { version } from '../package.json'
 import type { Agent } from './agents'
@@ -43,7 +43,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   let command
 
   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    consolji.info(`@nyxb/nyxi v${version}`)
+    consolji.info(`${c.nicegreen('@nyxb/nyxi')} v${c.yellow(`${version}`)}`)
     return
   }
 
@@ -57,7 +57,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
     consolji.info(`nyxun  ${dash}  uninstall`)
     consolji.info(`nyxci  ${dash}  clean install`)
     consolji.info(`nyxa   ${dash}  agent alias`)
-    consolji.info(c.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
+    consolji.info(`${c.yellow('check')} ${c.purple('https://github.com/nyxb/nyxi')} for more documentation.`)
     return
   }
 
