@@ -52,20 +52,26 @@ export async function detect({ autoInstall, cwd, skipPrompt }: DetectOptions = {
     agent = LOCKS[path.basename(lockPath)]
 
   // If no package manager is detected, prompt the user to choose one
-  if (!agent && skipPrompt !== true) {
-    const defaultAgent = await getDefaultAgent()
-    if ((defaultAgent as any) === 'prompt') {
-      agent = await tyck.select({
-        message: 'Please choose a package manager:',
-        options: [
-          { value: 'pnpm', label: 'pnpm (recommended)' },
-          { value: 'npm', label: 'npm' },
-          { value: 'yarn', label: 'yarn' },
-          { value: 'bun', label: 'bun' },
-        ],
-      }) as Agent
+  if (!agent) {
+    if (!skipPrompt) {
+      const defaultAgent = await getDefaultAgent()
+      if ((defaultAgent as any) === 'prompt') {
+        agent = await tyck.select({
+          message: 'Please choose a package manager:',
+          options: [
+            { value: 'pnpm', label: 'pnpm (recommended)' },
+            { value: 'npm', label: 'npm' },
+            { value: 'yarn', label: 'yarn' },
+            { value: 'bun', label: 'bun' },
+          ],
+        }) as Agent
+      }
+      else {
+        agent = defaultAgent as Agent
+      }
     }
     else {
+      const defaultAgent = await getDefaultAgent()
       agent = defaultAgent as Agent
     }
   }
