@@ -72,20 +72,22 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   }
   else {
     let agent: string = await detect({ ...options, cwd }) || await getDefaultAgent()
-    if (!agents.includes(agent as Agent)) {
-      const result = await tyck.select({
-        message: 'Choose the agent',
-        options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
-      })
+    if (agent !== 'skip_detect') {
+      if (!agents.includes(agent as Agent)) {
+        const result = await tyck.select({
+          message: 'Choose the agent',
+          options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
+        })
 
-      if (tyck.isCancel(result)) {
-        tyck.cancel('nevermind')
-        process.exit(0)
+        if (tyck.isCancel(result)) {
+          tyck.cancel('nevermind')
+          process.exit(0)
+        }
+        agent = result as Agent
+
+        if (!agent)
+          return
       }
-      agent = result as Agent
-
-      if (!agent)
-        return
     }
 
     command = await fn(agent as Agent, args, {

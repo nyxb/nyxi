@@ -85,4 +85,5 @@ export const parseNyxa = <Runner>((agent, args) => {
 
 export const parseNyxinit = <Runner>(async (_agent, _args) => {
   await createConfigFiles()
+  return 'skip_detect'
 })
