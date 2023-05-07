@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 import * as tyck from '@tyck/prompts'
 import { execaCommand } from 'execa'
-import c from '@nyxb/picocolors'
+import color from '@nyxb/picocolors'
 import { consolji } from 'consolji'
 import { version } from '../package.json'
 import type { Agent } from './agents'
@@ -28,7 +28,7 @@ export async function runCli(fn: Runner, options: DetectOptions = {}) {
   }
   catch (err: any) {
     if (err instanceof UnsupportedCommand)
-      consolji.error(c.red(` ${err.message}`))
+      consolji.error(color.red(` ${err.message}`))
 
     process.exit(1)
   }
@@ -43,13 +43,13 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   let command
 
   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    consolji.info(`${c.nicegreen('@nyxb/nyxi')} v${c.yellow(`${version}`)}`)
+    consolji.info(`@nyxb/nyxi v${version}`)
     return
   }
 
   if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
-    const dash = c.dim('-')
-    consolji.log(c.green(c.bold('@nyxb/nyxi')) + c.dim(` use the right package manager v${version}\n`))
+    const dash = color.dim('-')
+    consolji.log(color.green(color.bold('@nyxb/nyxi')) + color.dim(` use the right package manager v${version}\n`))
     consolji.info(`nyxi   ${dash}  install`)
     consolji.info(`nyxr   ${dash}  run`)
     consolji.info(`nyxlx  ${dash}  execute`)
@@ -57,7 +57,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
     consolji.info(`nyxun  ${dash}  uninstall`)
     consolji.info(`nyxci  ${dash}  clean install`)
     consolji.info(`nyxa   ${dash}  agent alias`)
-    consolji.info(`${c.yellow('check')} ${c.purple('https://github.com/nyxb/nyxi')} for more documentation.`)
+    consolji.info(`${color.yellow('check')} ${color.purple('https://github.com/nyxb/nyxi')} for more documentation.`)
     return
   }
 
@@ -72,22 +72,20 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   }
   else {
     let agent: string = await detect({ ...options, cwd }) || await getDefaultAgent()
-    if (agent !== 'skip_detect') {
-      if (!agents.includes(agent as Agent)) {
-        const result = await tyck.select({
-          message: 'Choose the agent',
-          options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
-        })
+    if (!agents.includes(agent as Agent)) {
+      const result = await tyck.select({
+        message: 'Choose the agent',
+        options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
+      })
 
-        if (tyck.isCancel(result)) {
-          tyck.cancel('nevermind')
-          process.exit(0)
-        }
-        agent = result as Agent
-
-        if (!agent)
-          return
+      if (tyck.isCancel(result)) {
+        tyck.cancel('nevermind')
+        process.exit(0)
       }
+      agent = result as Agent
+
+      if (!agent)
+        return
     }
 
     command = await fn(agent as Agent, args, {

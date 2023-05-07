@@ -19,6 +19,9 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
   let agent: Agent | null = null
   let version: string | null = null
 
+  if (process.argv.includes('nyxinit'))
+    return null
+
   const lockPath = await findUp(Object.keys(LOCKS), { cwd })
   let packageJsonPath: string | undefined
 
