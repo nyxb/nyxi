@@ -83,8 +83,6 @@ export const parseNyxa = <Runner>((agent, args) => {
   return getCommand(agent, 'agent', args)
 })
 
-export const parseNyxinit = <Runner>(async (_agent, args) => {
-  // Check if the first entry in the args array is 'nyxinit'.
-  if (args[0] === 'nyxinit')
-    await createConfigFiles()
+export const parseNyxinit = <Runner>(async (_agent, _args) => {
+  await createConfigFiles()
 })
