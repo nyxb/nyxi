@@ -43,7 +43,7 @@ export async function run(fn: Runner, args: string[], options: DetectOptions = {
   let command
 
   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    consolji.info(`@nyxb/nyxi v${version}`)
+    consolji.info(`${color.nicegreen('@nyxb/nyxi')} v${color.yellow(`${version}`)}`)
     return
   }
 

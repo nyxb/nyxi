@@ -13,15 +13,12 @@ import { getDefaultAgent } from './config'
 export interface DetectOptions {
   autoInstall?: boolean
   cwd?: string
+  skipPrompt?: boolean
 }
 
-export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
+export async function detect({ autoInstall, cwd, skipPrompt }: DetectOptions = {}) {
   let agent: Agent | null = null
   let version: string | null = null
-
-  if (process.argv.includes('nyxinit'))
-    return null
-
   const lockPath = await findUp(Object.keys(LOCKS), { cwd })
   let packageJsonPath: string | undefined
 
@@ -55,7 +52,7 @@ export async function detect({ autoInstall, cwd }: DetectOptions = {}) {
     agent = LOCKS[path.basename(lockPath)]
 
   // If no package manager is detected, prompt the user to choose one
-  if (!agent) {
+  if (!agent && skipPrompt !== true) {
     const defaultAgent = await getDefaultAgent()
     if ((defaultAgent as any) === 'prompt') {
       agent = await tyck.select({
