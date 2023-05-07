@@ -1,6 +1,6 @@
 {
   "name": "@nyxb/nyxi",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "packageManager": "pnpm@8.0.0",
   "description": "Use the right package manager",
   "author": "Dennis Ollhoff <contact@nyxb.com>",
@@ -45,7 +45,8 @@
     "stub": "unbuild --stub",
     "release": "bumpp && npm publish",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "nyxinit": "esno src/commands/nyxinit.ts"
   },
   "devDependencies": {
     "@nyxb/eslint-config": "^0.0.9",
