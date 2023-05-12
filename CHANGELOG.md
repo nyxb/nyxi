@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.0.29
+
+[compare changes](https://github.com/nyxb/nyxi/compare/v0.0.28...v0.0.29)
+
+
+### 🏡 Chore
+
+  - **github-assets:** Add cover image for Nyxi GitHub repository This commit adds a new cover image for the Nyxi GitHub repository. The image is located in the .github/assets directory and is named cover-github-nyxi.png. The image is a visual representation of the Nyxi project and will be used as the cover image for the repository. ([2169a88](https://github.com/nyxb/nyxi/commit/2169a88))
+  - **package.json:** Remove 'nyxr test' command from release script The 'nyxr test' command was removed from the release script as it is not necessary to run tests before publishing a new version. ([3b54c14](https://github.com/nyxb/nyxi/commit/3b54c14))
+
+### 🎨 Styles
+
+  - **README.md): remove background images and update cover image 🚚 chore(README.md): update homepage link 📝 docs(package.json:** Update package description and add packageManager field The background images were removed from the README.md file and the cover image was updated to a new one. The homepage link was updated to a new URL. The package description was updated to "Always right package manager" to better reflect the purpose of the package. The packageManager field was added to the package.json file to specify the version of pnpm used. ([9fe61c8](https://github.com/nyxb/nyxi/commit/9fe61c8))
+
+### ❤️  Contributors
+
+- Nyxb <contact@nyxb.xyz>
+
 ## v0.0.21...main
 
 [compare changes](https://github.com/nyxb/nyxi/compare/v0.0.21...main)
