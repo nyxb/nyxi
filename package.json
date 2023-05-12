@@ -7,10 +7,10 @@
   "homepage": "https://💻nyxb.ws",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nyxb/nyxi.git"
+    "url": "git+https://github.com/nyxblabs/nyxi.git"
   },
   "bugs": {
-    "url": "https://github.com/nyxb/nyxi/issues"
+    "url": "https://github.com/nyxblabs/nyxi/issues"
   },
   "exports": {
     ".": {

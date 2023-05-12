@@ -95,8 +95,8 @@
 [npm-version-href]: https://npmjs.com/package/@nyxb/nyxi
 [npm-downloads-src]: https://img.shields.io/npm/dm/@nyxb/nyxi?style=flat&colorA=18181B&colorB=14F195
 [npm-downloads-href]: https://npmjs.com/package/nyxi
-[license-src]: https://img.shields.io/github/license/nyxb/nyxi.svg?style=flat&colorA=18181B&colorB=14F195
-[license-href]: https://github.com/nyxb/nyxi/blob/main/LICENSE
+[license-src]: https://img.shields.io/github/license/nyxblabs/nyxi.svg?style=flat&colorA=18181B&colorB=14F195
+[license-href]: https://github.com/nyxblabs/nyxi/blob/main/LICENSE
 
 <!-- Cover -->
 [cover-src]: https://raw.githubusercontent.com/nyxblabs/nyxi/main/.github/assets/cover-github-nyxi.png
