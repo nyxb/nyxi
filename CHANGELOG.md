@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.0.30
+
+[compare changes](https://github.com/nyxblabs/nyxi/compare/v0.0.29...v0.0.30)
+
+
+### 🏡 Chore
+
+  - **README.md): update license badge source and repository URL 🔧 chore(package.json:** Update repository URL and bugs URL The license badge source and repository URL were updated to reflect the new repository location. The repository URL and bugs URL in package.json were also updated to reflect the new repository location. ([45f185f](https://github.com/nyxblabs/nyxi/commit/45f185f))
+
+### ❤️  Contributors
+
+- Nyxb <contact@nyxb.xyz>
+
 ## v0.0.29
 
 [compare changes](https://github.com/nyxb/nyxi/compare/v0.0.28...v0.0.29)
