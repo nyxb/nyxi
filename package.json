@@ -1,11 +1,10 @@
 {
   "name": "@nyxb/nyxi",
   "version": "0.0.28",
-  "packageManager": "pnpm@8.0.0",
-  "description": "Use the right package manager",
+  "description": "📦 Always right package manager",
   "author": "Dennis Ollhoff <contact@nyxb.com>",
   "license": "MIT",
-  "homepage": "https://github.com/nyxb/nyxi#readme",
+  "homepage": "https://💻nyxb.ws",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nyxb/nyxi.git"
@@ -43,7 +42,7 @@
     "nyxr": "esno src/commands/nyxr.ts",
     "build": "unbuild",
     "stub": "unbuild --stub",
-    "release": "bumpp && npm publish",
+    "release": "nyxr test && nyxlx changelogen --release && pnpm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest",
     "nyxinit": "esno src/commands/nyxinit.ts"
@@ -55,7 +54,6 @@
     "@types/ini": "^1.3.31",
     "@types/node": "^18.15.11",
     "@types/which": "^3.0.0",
-    "bumpp": "^9.0.0",
     "chalk": "^5.2.0",
     "eslint": "^8.37.0",
     "esno": "^0.16.3",
@@ -81,5 +79,6 @@
   },
   "dependencies": {
     "consolji": "^0.1.1"
-  }
+  },
+  "packageManager": "pnpm@8.5.0"
 }

@@ -1,18 +1,11 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/nyxb/nyxi/main/.github/assets/background_light.png#gh-light-mode-only">
-<img src="https://raw.githubusercontent.com/nyxb/nyxi/main/.github/assets/background_dark.png#gh-dark-mode-only">
-</p>
+[![cover][cover-src]][cover-href]
+[![npm version][npm-version-src]][npm-version-href] 
+[![npm downloads][npm-downloads-src]][npm-downloads-href]  
+[![License][license-src]][license-href]
 
----
+# 🌙 Nyxi
 
-# Nyxi
-
-<p>
-  <a href="https://www.npmjs.com/package/@nyxb/nyxi"><img src="https://img.shields.io/npm/v/@nyxb/nyxi.svg?style=flat&colorA=18181B&colorB=14F195" alt="Version"></a>
-  <a href="https://www.paka.dev/npm/@nyxb/nyxi"><img src="https://www.paka.dev/badges/v0/cute.svg" alt="Docs"></a>
-  <a href="https://www.npmjs.com/package/@nyxb/nyxi"><img src="https://img.shields.io/npm/dm/@nyxb/nyxi.svg?style=flat&colorA=18181B&colorB=14F195" alt="Downloads"></a>
-  <a href="https://github.com/nyxb/nyxi/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nyxb/nyxi.svg?style=flat&colorA=18181B&colorB=14F195" alt="License"></a>
- </p>
+> 📦 Always right package manager
 
 <table>
 <thead>
@@ -92,6 +85,19 @@
   <a href="https://chat.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/discord.svg" alt="Discord"></a>&nbsp;&nbsp;<a href="https://twitter.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/twitter.svg" alt="Twitter"></a>&nbsp;&nbsp;<a href="https://github.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/github-mark.svg" alt="GitHub"></a>
 </p>
 
-## License
+## 📜 License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) - Made with 💞
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@nyxb/nyxi?style=flat&colorA=18181B&colorB=14F195
+[npm-version-href]: https://npmjs.com/package/@nyxb/nyxi
+[npm-downloads-src]: https://img.shields.io/npm/dm/@nyxb/nyxi?style=flat&colorA=18181B&colorB=14F195
+[npm-downloads-href]: https://npmjs.com/package/nyxi
+[license-src]: https://img.shields.io/github/license/nyxb/nyxi.svg?style=flat&colorA=18181B&colorB=14F195
+[license-href]: https://github.com/nyxb/nyxi/blob/main/LICENSE
+
+<!-- Cover -->
+[cover-src]: https://raw.githubusercontent.com/nyxblabs/nyxi/main/.github/assets/cover-github-nyxi.png
+[cover-href]: https://💻nyxb.ws
