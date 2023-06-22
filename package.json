@@ -1,6 +1,7 @@
 {
   "name": "@nyxb/nyxi",
   "version": "0.0.30",
+  "packageManager": "pnpm@8.5.0",
   "description": "📦 Always right package manager",
   "author": "Dennis Ollhoff <contact@nyxb.com>",
   "license": "MIT",
@@ -36,16 +37,22 @@
     "dist",
     "bin"
   ],
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "scripts": {
     "prepublishOnly": "npm run build",
     "dev": "esno src/commands/nyxi.ts",
     "nyxr": "esno src/commands/nyxr.ts",
     "build": "unbuild",
     "stub": "unbuild --stub",
-    "release": "nyxlx changelogen --release && pnpm publish && git push --follow-tags",
+    "release": "nyxlx changelogen --release && pnpm publish && git push",
     "lint": "eslint .",
     "test": "vitest",
     "nyxinit": "esno src/commands/nyxinit.ts"
+  },
+  "dependencies": {
+    "consolji": "^0.1.1"
   },
   "devDependencies": {
     "@nyxb/eslint-config": "^0.0.9",
@@ -73,12 +80,5 @@
   },
   "eslintConfig": {
     "extends": "@nyxb"
-  },
-  "engines": {
-    "node": ">=18.15.0"
-  },
-  "dependencies": {
-    "consolji": "^0.1.1"
-  },
-  "packageManager": "pnpm@8.5.0"
+  }
 }
