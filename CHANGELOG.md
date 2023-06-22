@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.0.31
+
+[compare changes](https://github.com/nyxblabs/nyxi/compare/v0.0.30...v0.0.31)
+
+
+### 🚀 Enhancements
+
+  - **karium.config.ts): add buildkarium configuration file to define build options 🚚 chore(package.json): remove unbuild package and add buildkarium package as a dependency 🐛 fix(init.ts:** Fix typos and update package.json fields to match the new project name and structure. Add support for opening files with Visual Studio Code or Visual Studio Code Insider. ([bfaace9](https://github.com/nyxblabs/nyxi/commit/bfaace9))
+
+### 🏡 Chore
+
+  - **release:** V0.0.30 ([4ce639d](https://github.com/nyxblabs/nyxi/commit/4ce639d))
+  - **package.json): update packageManager to pnpm@8.5.0 🔧 chore(package.json): add consolji dependency to dependencies 🔧 chore(package.json:** Move engines object to the top level of the file for better readability ([41b06fe](https://github.com/nyxblabs/nyxi/commit/41b06fe))
+
+### ❤️  Contributors
+
+- Nyxb <contact@nyxb.xyz>
+
 ## v0.0.30
 
 [compare changes](https://github.com/nyxblabs/nyxi/compare/v0.0.29...v0.0.30)
