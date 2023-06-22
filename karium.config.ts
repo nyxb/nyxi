@@ -1,4 +1,4 @@
-import { defineBuildConfig } from 'unbuild'
+import { defineBuildConfig } from 'buildkarium'
 import fg from 'fast-glob'
 
 export default defineBuildConfig({
