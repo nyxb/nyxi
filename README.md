@@ -1,103 +1,234 @@
-[![cover][cover-src]][cover-href]
-[![npm version][npm-version-src]][npm-version-href] 
-[![npm downloads][npm-downloads-src]][npm-downloads-href]  
-[![License][license-src]][license-href]
+# nyxi
 
-# 🌙 Nyxi
+~~*`npm i` in a pnpm project, again? Sh\*t!*~~
 
-> 📦 Always right package manager
+**nyxi** - use the right package manager
 
-<table>
-<thead>
-<tr>
-<th width="2000" colspan="2">
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td width="80" align="center" valign="top">
-    <br>
-    <a href="docs/"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/documentation.png"></a>
-  </td>
-  <td valign="top">
-    <h3>Documentation</h3>
-    <p>
-      We highly recommend you take a look at <a href="https://github.com/nyxb/nyxi/tree/main/docs/commands.md">the documentation</a> to level up.
-    </p>
-  </td>
-</tr>
-</tbody>
-</table>
+<br>
 
-<table>
-<thead>
-<tr>
-<th width="2000" colspan="2">
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td width="80" align="center" valign="top">
-    <br>
-    <a href="https://github.com/nyxb/nyxi/blob/main/docs/reporting-bugs.md"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/bugs.png"></a>
-  </td>
-  <td valign="top">
-    <h3>Reporting bugs</h3>
-    <p>
-      Check out the <a href="https://github.com/nyxb/nyxi/blob/main/docs/reporting-bugs.md">Reporting Bugs</a> page.</p>
-    </p>
-  </td>
-</tr>
-<tr>
-  <td width="80" align="center" valign="top">
-    <br>
-    <a href="https://github.com/nyxb/contribute"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/suggestions.png"></a>
-  </td>
-  <td valign="top">
-    <h3>Suggestions</h3>
-    <p>
-      Check out the <a href="https://github.com/nyxb/contribute">Contribution</a> page.
-    </p>
-  </td>
-</tr>
-<tr>
-  <td width="80" align="center" valign="top">
-    <br>
-    <a href="https://github.com/nyxb/nyxi/blob/main/docs/getting-help.md"><img src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/questions.png"></a>
-  </td>
-  <td valign="top">
-    <h3>Questions</h3>
-    <p>
-      Check out the <a href="https://github.com/nyxb/nyxi/blob/main/docs/getting-help.md">Getting Help</a> page.
-    </p>
-  </td>
-</tr>
-</tbody>
-</table>
+<pre>
+npm i -g <b>@nyxb/nyxi</b>
+</pre>
 
----
+<a href='https://docs.npmjs.com/cli/v6/commands/npm'>npm</a> · <a href='https://yarnpkg.com'>yarn</a> · <a href='https://pnpm.js.org/en/'>pnpm</a> · <a href='https://bun.sh/'>bun</a>
 
-## Follow us
 
-<p valign="center">
-  <a href="https://chat.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/discord.svg" alt="Discord"></a>&nbsp;&nbsp;<a href="https://twitter.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/twitter.svg" alt="Twitter"></a>&nbsp;&nbsp;<a href="https://github.nyxb.yxz"><img width="20px" src="https://raw.githubusercontent.com/nyxb/tyck/main/.github/assets/github-mark.svg" alt="GitHub"></a>
-</p>
+<br>
 
-## 📜 License
 
-[MIT](./LICENSE) - Made with 💞
+### `nyxinit` - init
+    
+Creates a prompt to choose between package.json and tsconfig.json and generates the file when selected.
 
-<!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@nyxb/nyxi?style=flat&colorA=18181B&colorB=14F195
-[npm-version-href]: https://npmjs.com/package/@nyxb/nyxi
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nyxb/nyxi?style=flat&colorA=18181B&colorB=14F195
-[npm-downloads-href]: https://npmjs.com/package/nyxi
-[license-src]: https://img.shields.io/github/license/nyxblabs/nyxi.svg?style=flat&colorA=18181B&colorB=14F195
-[license-href]: https://github.com/nyxblabs/nyxi/blob/main/LICENSE
+### `nyxi` - install
 
-<!-- Cover -->
-[cover-src]: https://raw.githubusercontent.com/nyxblabs/nyxi/main/.github/assets/cover-github-nyxi.png
-[cover-href]: https://💻nyxb.ws
+```bash
+nyxi
+
+# npm install
+# yarn install
+# pnpm install
+# bun install
+```
+
+```bash
+nyxi preact
+
+# npm i preact
+# yarn add preact
+# pnpm add preact
+# bun add preact
+```
+
+```bash
+nyxi @types/node -D
+
+# npm i @types/node -D
+# yarn add @types/node -D
+# pnpm add -D @types/node
+# bun add -d @types/node
+```
+
+```bash
+nyxi --frozen
+
+# npm ci
+# yarn install --frozen-lockfile (Yarn 1)
+# yarn install --immutable (Yarn Berry)
+# pnpm install --frozen-lockfile
+# bun install --no-save
+```
+
+```bash
+nyxi -g eslint
+
+# npm i -g eslint
+# yarn global add eslint (Yarn 1)
+# pnpm add -g eslint
+# bun add -g eslint
+
+# this uses default agent, regardless your current working directory
+```
+
+<br>
+
+### `nyxr` - run
+
+```bash
+nyxr dev --port=3000
+
+# npm run dev -- --port=3000
+# yarn run dev --port=3000
+# pnpm run dev --port=3000
+# bun run dev --port=3000
+```
+
+```bash
+nyxrr
+
+# interactively select the script to run
+# supports https://www.npmjs.com/package/npm-scripts-info convention
+```
+
+```bash
+nyxr -
+
+# rerun the last command
+```
+
+<br>
+
+### `nyxlx` - download & execute
+
+```bash
+nyxlx preact
+
+# npx preact
+# yarn dlx preact
+# pnpm dlx preact
+# bunx preact
+```
+
+```bash
+```
+
+<br>
+
+### `nyxu` - upgrade
+
+```bash
+nyxu
+
+# (not available for bun)
+# npm upgrade
+# yarn upgrade (Yarn 1)
+# yarn up (Yarn Berry)
+# pnpm update
+```
+
+```bash
+nyxu -i
+
+# (not available for npm & bun)
+# yarn upgrade-interactive (Yarn 1)
+# yarn up -i (Yarn Berry)
+# pnpm update -i
+```
+
+<br>
+
+### `nun` - uninstall
+
+```bash
+nyxun unbuild
+
+# npm uninstall unbuild
+# yarn remove unbuild
+# pnpm remove unbuild
+# bun remove unbuild
+```
+
+```bash
+nyxun -g silent
+
+# npm uninstall -g silent
+# yarn global remove silent
+# pnpm remove -g silent
+# bun remove -g silent
+```
+
+<br>
+
+### `nyxci` - clean install
+
+```bash
+nyxci
+
+# npm ci
+# yarn install --frozen-lockfile
+# pnpm install --frozen-lockfile
+# bun install --no-save
+```
+
+if the corresponding node manager is not present, this command will install it globally along the way.
+
+<br>
+
+### `nyxa` - agent alias
+
+```bash
+nyxa
+
+# npm
+# yarn
+# pnpm
+# bun
+```
+
+```bash
+nyxa run foo
+
+# npm run foo
+# yarn run foo
+# pnpm run foo
+# bun run foo
+```
+
+<br>
+
+### Change Directory
+
+```bash
+nyxi -C packages/foo preact
+nyxr -C playground dev
+```
+
+<br>
+
+### Config
+
+```ini
+; ~/.nyxirc
+
+; fallback when no lock found
+defaultAgent=npm # default "prompt"
+
+; for global installs
+globalAgent=npm
+```
+
+```bash
+# ~/.bashrc
+
+# custom configuration file path
+export NYXI_CONFIG_FILE="$HOME/.config/nyxi/nyxirc"
+```
+
+<br>
+
+### How?
+
+**nyxi** assumes that you work with lockfiles (and you should)
+
+Before it runs, it will detect your `yarn.lock` / `pnpm-lock.yaml` / `package-lock.json` / `bun.lockb` to know current package manager (or `packageManager` field in your packages.json if specified), and runs the [corresponding commands](https://github.com/nyxb/nyxi/blob/main/src/agents.ts).
