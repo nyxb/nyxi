@@ -1,8 +1,8 @@
-import { expect, test } from 'vitest'
+import { expect, it } from 'vitest'
 import { getCommand } from '../src/commands'
 
-test('wrong agent', () => {
-  expect(() => {
-    getCommand('idk' as any, 'install', [])
-  }).toThrow('Unsupported agent "idk"')
+it('wrong agent', () => {
+   expect(() => {
+      getCommand('idk' as any, 'install', [])
+   }).toThrow('Unsupported agent "idk"')
 })

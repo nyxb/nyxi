@@ -1,8 +1,9 @@
 import { resolve } from 'node:path'
-import * as tyck from '@tyck/prompts'
+import process from 'node:process'
+import prompts from '@posva/prompts'
+import type { Options as ExecaOptions } from 'execa'
 import { execaCommand } from 'execa'
-import color from '@nyxb/picocolors'
-import { consolji } from 'consolji'
+import color from 'kleur'
 import { version } from '../package.json'
 import type { Agent } from './agents'
 import { agents } from './agents'
@@ -10,101 +11,132 @@ import { getDefaultAgent, getGlobalAgent } from './config'
 import type { DetectOptions } from './detect'
 import { detect } from './detect'
 import { getVoltaPrefix, remove } from './utils'
-import { UnsupportedCommand } from './parse'
+import { UnsupportedCommand, getCommand } from './parse'
 
 const DEBUG_SIGN = '?'
 
 export interface RunnerContext {
-  hasLock?: boolean
-  cwd?: string
+   programmatic?: boolean
+   hasLock?: boolean
+   cwd?: string
 }
 
 export type Runner = (agent: Agent, args: string[], ctx?: RunnerContext) => Promise<string | undefined> | string | undefined
 
-export async function runCli(fn: Runner, options: DetectOptions = {}, skipPrompt = false) {
-  const args = process.argv.slice(2).filter(Boolean)
-  try {
-    await run(fn, args, options, skipPrompt)
-  }
-  catch (err: any) {
-    if (err instanceof UnsupportedCommand)
-      consolji.error(color.red(` ${err.message}`))
+export async function runCli(fn: Runner, options: DetectOptions & { args?: string[] } = {}) {
+   const {
+      args = process.argv.slice(2).filter(Boolean),
+   } = options
+   try {
+      await run(fn, args, options)
+   }
+   catch (error) {
+      if (error instanceof UnsupportedCommand && !options.programmatic)
+         console.log(color.red(`\u2717 ${error.message}`))
 
-    process.exit(1)
-  }
+      if (!options.programmatic)
+         process.exit(1)
+
+      throw error
+   }
 }
 
-export async function run(fn: Runner, args: string[], options: DetectOptions = {}, skipPrompt = false) {
-  const debug = args.includes(DEBUG_SIGN)
-  if (debug)
-    remove(args, DEBUG_SIGN)
+export async function getCliCommand(
+   fn: Runner,
+   args: string[],
+   options: DetectOptions = {},
+   cwd: string = options.cwd ?? process.cwd(),
+) {
+   const isGlobal = args.includes('-g')
+   if (isGlobal)
+      return await fn(await getGlobalAgent(), args)
 
-  let cwd = process.cwd()
-  let command
-
-  if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
-    consolji.info(`${color.nicegreen('@nyxb/nyxi')} v${color.yellow(`${version}`)}`)
-    return
-  }
-
-  if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
-    const dash = color.dim('-')
-    consolji.log(color.green(color.bold('@nyxb/nyxi')) + color.dim(` use the right package manager v${version}\n`))
-    consolji.info(`nyxi   ${dash}  install`)
-    consolji.info(`nyxr   ${dash}  run`)
-    consolji.info(`nyxlx  ${dash}  execute`)
-    consolji.info(`nyxu   ${dash}  upgrade`)
-    consolji.info(`nyxun  ${dash}  uninstall`)
-    consolji.info(`nyxci  ${dash}  clean install`)
-    consolji.info(`nyxa   ${dash}  agent alias`)
-    consolji.info(`${color.yellow('check')} ${color.purple('https://github.com/nyxb/nyxi')} for more documentation.`)
-    return
-  }
-
-  if (args[0] === '-C') {
-    cwd = resolve(cwd, args[1])
-    args.splice(0, 2)
-  }
-
-  const isGlobal = args.includes('-g')
-  if (isGlobal) {
-    command = await fn(await getGlobalAgent(), args)
-  }
-  else {
-    let agent: string = await detect({ ...options, cwd }) || await getDefaultAgent()
-    if (!agents.includes(agent as Agent) && !skipPrompt) {
-      const result = await tyck.select({
-        message: 'Choose the agent',
-        options: agents.filter(i => !i.includes('@')).map(value => ({ label: value, value })),
-      })
-
-      if (tyck.isCancel(result)) {
-        tyck.cancel('nevermind')
-        process.exit(0)
-      }
-      agent = result as Agent
-
+   let agent = (await detect({ ...options, cwd })) || (await getDefaultAgent(options.programmatic))
+   if (agent === 'prompt') {
+      agent = (
+         await prompts({
+            name: 'agent',
+            type: 'select',
+            message: 'Choose the agent',
+            choices: agents.filter(i => !i.includes('@')).map(value => ({ title: value, value })),
+         })
+      ).agent
       if (!agent)
-        return
-    }
+         return
+   }
 
-    command = await fn(agent as Agent, args, {
+   return await fn(agent as Agent, args, {
+      programmatic: options.programmatic,
       hasLock: Boolean(agent),
       cwd,
-    })
-  }
+   })
+}
 
-  if (!command)
-    return
+export async function run(fn: Runner, args: string[], options: DetectOptions = {}) {
+   const debug = args.includes(DEBUG_SIGN)
+   if (debug)
+      remove(args, DEBUG_SIGN)
 
-  const voltaPrefix = getVoltaPrefix()
-  if (voltaPrefix)
-    command = voltaPrefix.concat(' ').concat(command)
+   let cwd = options.cwd ?? process.cwd()
+   if (args[0] === '-C') {
+      cwd = resolve(cwd, args[1])
+      args.splice(0, 2)
+   }
 
-  if (debug) {
-    consolji.log(command)
-    return
-  }
+   if (args.length === 1 && (args[0]?.toLowerCase() === '-v' || args[0] === '--version')) {
+      const getCmd = (a: Agent) => agents.includes(a) ? getCommand(a, 'agent', ['-v']) : `${a} -v`
+      const getV = (a: string, o?: ExecaOptions) => execaCommand(getCmd(a as Agent), o).then(e => e.stdout).then(e => e.startsWith('v') ? e : `v${e}`)
+      const globalAgentPromise = getGlobalAgent()
+      const globalAgentVersionPromise = globalAgentPromise.then(getV)
+      const agentPromise = detect({ ...options, cwd }).then(a => a || '')
+      const agentVersionPromise = agentPromise.then(a => a && getV(a, { cwd }))
+      const nodeVersionPromise = getV('node', { cwd })
 
-  await execaCommand(command, { stdio: 'inherit', encoding: 'utf-8', cwd })
+      console.log(`@nyxb/nyxi  ${color.cyan(`v${version}`)}`)
+      console.log(`node       ${color.green(await nodeVersionPromise)}`)
+      const [agent, agentVersion] = await Promise.all([agentPromise, agentVersionPromise])
+      if (agent)
+         console.log(`${agent.padEnd(10)} ${color.blue(agentVersion)}`)
+      else
+         console.log('agent      no lock file')
+      const [globalAgent, globalAgentVersion] = await Promise.all([globalAgentPromise, globalAgentVersionPromise])
+      console.log(`${(`${globalAgent} -g`).padEnd(10)} ${color.blue(globalAgentVersion)}`)
+      return
+   }
+
+   if (args.length === 1 && (args[0] === '--version' || args[0] === '-v')) {
+      console.log(`@nyxb/nyxi v${version}`)
+      return
+   }
+
+   if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
+      const dash = color.dim('-')
+      console.log(color.green(color.bold('@nyxb/nyxi')) + color.dim(` use the right package manager v${version}\n`))
+      console.log(`nyxi    ${dash}  install`)
+      console.log(`nyxr    ${dash}  run`)
+      console.log(`nyxlx   ${dash}  execute`)
+      console.log(`nyxu    ${dash}  upgrade`)
+      console.log(`nyxun   ${dash}  uninstall`)
+      console.log(`nyxci   ${dash}  clean install`)
+      console.log(`nyxa    ${dash}  agent alias`)
+      console.log(`nyxi -v ${dash}  show used agent`)
+      console.log(color.yellow('\ncheck https://github.com/nyxb/nyxi for more documentation.'))
+      return
+   }
+
+   let command = await getCliCommand(fn, args, options, cwd)
+
+   if (!command)
+      return
+
+   const voltaPrefix = getVoltaPrefix()
+   if (voltaPrefix)
+      command = voltaPrefix.concat(' ').concat(command)
+
+   if (debug) {
+      console.log(command)
+      return
+   }
+
+   await execaCommand(command, { stdio: 'inherit', cwd })
 }
