@@ -1,25 +1,25 @@
-import { expect, test } from 'vitest'
+import { expect, it } from 'vitest'
 import { parseNyxi } from '../../src/commands'
 
 const agent = 'yarn'
 function _(arg: string, expected: string) {
-  return () => {
-    expect(
-      parseNyxi(agent, arg.split(' ').filter(Boolean)),
-    ).toBe(
-      expected,
-    )
-  }
+   return () => {
+      expect(
+         parseNyxi(agent, arg.split(' ').filter(Boolean)),
+      ).toBe(
+         expected,
+      )
+   }
 }
 
-test('empty', _('', 'yarn install'))
+it('empty', _('', 'yarn install'))
 
-test('single add', _('axios', 'yarn add axios'))
+it('single add', _('axios', 'yarn add axios'))
 
-test('multiple', _('eslint @types/node', 'yarn add eslint @types/node'))
+it('multiple', _('eslint @types/node', 'yarn add eslint @types/node'))
 
-test('-D', _('eslint @types/node -D', 'yarn add eslint @types/node -D'))
+it('-D', _('eslint @types/node -D', 'yarn add eslint @types/node -D'))
 
-test('global', _('eslint nyxi -g', 'yarn global add eslint nyxi'))
+it('global', _('eslint nyxi -g', 'yarn global add eslint nyxi'))
 
-test('frozen', _('--frozen', 'yarn install --frozen-lockfile'))
+it('frozen', _('--frozen', 'yarn install --frozen-lockfile'))
