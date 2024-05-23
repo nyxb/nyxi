@@ -1,6 +1,6 @@
 {
   "name": "@nyxb/nyxi",
-  "version": "0.0.31",
+  "version": "1.0.0",
   "packageManager": "pnpm@9.1.2",
   "description": "📦 Always right package manager",
   "author": "Dennis Ollhoff <contact@nyxb.com>",
