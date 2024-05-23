@@ -1,15 +1,15 @@
-import { expect, test } from 'vitest'
+import { expect, it } from 'vitest'
 import { parseNyxu } from '../../src/commands'
 
 const agent = 'npm'
 function _(arg: string, expected: string) {
-  return () => {
-    expect(
-      parseNyxu(agent, arg.split(' ').filter(Boolean)),
-    ).toBe(
-      expected,
-    )
-  }
+   return () => {
+      expect(
+         parseNyxu(agent, arg.split(' ').filter(Boolean)),
+      ).toBe(
+         expected,
+      )
+   }
 }
 
-test('empty', _('', 'npm update'))
+it('empty', _('', 'npm update'))
