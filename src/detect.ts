@@ -1,107 +1,82 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import process from 'node:process'
 import { execaCommand } from 'execa'
 import { findUp } from 'find-up'
 import terminalLink from 'terminal-link'
-import * as tyck from '@tyck/prompts'
-import { consolji } from 'consolji'
+import prompts from '@posva/prompts'
 import type { Agent } from './agents'
 import { AGENTS, INSTALL_PAGE, LOCKS } from './agents'
 import { cmdExists } from './utils'
-import { getDefaultAgent } from './config'
 
 export interface DetectOptions {
-  autoInstall?: boolean
-  cwd?: string
-  skipPrompt?: boolean
+   autoInstall?: boolean
+   programmatic?: boolean
+   cwd?: string
 }
 
-export async function detect({ autoInstall, cwd, skipPrompt }: DetectOptions = {}) {
-  let agent: Agent | null = null
-  let version: string | null = null
-  const lockPath = await findUp(Object.keys(LOCKS), { cwd })
-  let packageJsonPath: string | undefined
+export async function detect({ autoInstall, programmatic, cwd }: DetectOptions = {}) {
+   let agent: Agent | null = null
+   let version: string | null = null
 
-  if (lockPath)
-    packageJsonPath = path.resolve(lockPath, '../package.json')
-  else
-    packageJsonPath = await findUp('package.json', { cwd })
+   const lockPath = await findUp(Object.keys(LOCKS), { cwd })
+   let packageJsonPath: string | undefined
 
-  // read `packageManager` field in package.json
-  if (packageJsonPath && fs.existsSync(packageJsonPath)) {
-    try {
-      const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
-      if (typeof pkg.packageManager === 'string') {
-        const [name, ver] = pkg.packageManager.split('@')
-        version = ver
-        if (name === 'yarn' && parseInt(ver) > 1)
-          agent = 'yarn@berry'
-        else if (name === 'pnpm' && parseInt(ver) < 7)
-          agent = 'pnpm@6'
-        else if (name in AGENTS)
-          agent = name
-        else
-          consolji.warn('[nyxi] Unknown packageManager:', pkg.packageManager)
+   if (lockPath)
+      packageJsonPath = path.resolve(lockPath, '../package.json')
+   else
+      packageJsonPath = await findUp('package.json', { cwd })
+
+   // read `packageManager` field in package.json
+   if (packageJsonPath && fs.existsSync(packageJsonPath)) {
+      try {
+         const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+         if (typeof pkg.packageManager === 'string') {
+            const [name, ver] = pkg.packageManager.replace(/^\^/, '').split('@')
+            version = ver
+            if (name === 'yarn' && Number.parseInt(ver) > 1) {
+               agent = 'yarn@berry'
+               // the version in packageManager isn't the actual yarn package version
+               version = 'berry'
+            }
+            else if (name === 'pnpm' && Number.parseInt(ver) < 7) {
+               agent = 'pnpm@6'
+            }
+            else if (name in AGENTS) {
+               agent = name
+            }
+            else if (!programmatic) {
+               console.warn('[nyxi] Unknown packageManager:', pkg.packageManager)
+            }
+         }
       }
-    }
-    catch {}
-  }
+      catch {}
+   }
 
-  // detect based on lock
-  if (!agent && lockPath)
-    agent = LOCKS[path.basename(lockPath)]
+   // detect based on lock
+   if (!agent && lockPath)
+      agent = LOCKS[path.basename(lockPath)]
 
-  // If no package manager is detected, prompt the user to choose one
-  if (!agent) {
-    if (!skipPrompt) {
-      const defaultAgent = await getDefaultAgent()
-      if ((defaultAgent as any) === 'prompt') {
-        agent = await tyck.select({
-          message: 'Please choose a package manager:',
-          options: [
-            { value: 'pnpm', label: 'pnpm (recommended)' },
-            { value: 'npm', label: 'npm' },
-            { value: 'yarn', label: 'yarn' },
-            { value: 'bun', label: 'bun' },
-          ],
-        }) as Agent
+   // auto install
+   if (agent && !cmdExists(agent.split('@')[0]) && !programmatic) {
+      if (!autoInstall) {
+         console.warn(`[nyxi] Detected ${agent} but it doesn't seem to be installed.\n`)
+
+         if (process.env.CI)
+            process.exit(1)
+
+         const link = terminalLink(agent, INSTALL_PAGE[agent])
+         const { tryInstall } = await prompts({
+            name: 'tryInstall',
+            type: 'confirm',
+            message: `Would you like to globally install ${link}?`,
+         })
+         if (!tryInstall)
+            process.exit(1)
       }
-      else {
-        agent = defaultAgent as Agent
-      }
-    }
-    else {
-      const defaultAgent = await getDefaultAgent()
-      agent = defaultAgent as Agent
-    }
-  }
-  // auto install
-  if (agent && !cmdExists(agent.split('@')[0])) {
-    if (!autoInstall) {
-      consolji.warn(`[nyxi] Detected ${agent} but it doesn't seem to be installed.\n`)
 
-      if (process.env.CI)
-        process.exit(1)
+      await execaCommand(`npm i -g ${agent.split('@')[0]}${version ? `@${version}` : ''}`, { stdio: 'inherit', cwd })
+   }
 
-      const link = terminalLink(agent, INSTALL_PAGE[agent])
-      const tryInstall = await tyck.select({
-        message: `Would you like to globally install ${link}?`,
-        options: [
-          { value: true, label: 'Yes' },
-          { value: false, label: 'No' },
-        ],
-      })
-      if (tryInstall === 0) {
-        tyck.cancel('nevermind')
-        process.exit(0)
-      }
-      else if (!tryInstall) {
-        process.exit(1)
-      }
-    }
-
-    await execaCommand(`npm i -g ${agent}${version ? `@${version}` : ''}`, { stdio: 'inherit', cwd })
-  }
-
-  return agent
+   return agent
 }
