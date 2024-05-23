@@ -1,6 +1,6 @@
 # nyxi
 
-~~*`npm i` in a pnpm project, again? Sh\*t!*~~
+~~_`npm i` in a pnpm project, again? Sh\*t!_~~
 
 **nyxi** - use the right package manager
 
@@ -12,14 +12,11 @@ npm i -g <b>@nyxb/nyxi</b>
 
 <a href='https://docs.npmjs.com/cli/v6/commands/npm'>npm</a> · <a href='https://yarnpkg.com'>yarn</a> · <a href='https://pnpm.js.org/en/'>pnpm</a> · <a href='https://bun.sh/'>bun</a>
 
-
 <br>
 
-
 ### `nyxinit` - init
-    
-Creates a prompt to choose between package.json and tsconfig.json and generates the file when selected.
 
+Creates a prompt to choose between package.json and tsconfig.json and generates the file when selected.
 
 ### `nyxi` - install
 
@@ -111,6 +108,7 @@ nyxlx preact
 ```
 
 ```bash
+
 ```
 
 <br>
@@ -138,7 +136,7 @@ nyxu -i
 
 <br>
 
-### `nun` - uninstall
+### `nyxun` - uninstall
 
 ```bash
 nyxun unbuild
