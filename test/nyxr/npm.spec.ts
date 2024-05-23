@@ -1,21 +1,23 @@
-import { expect, test } from 'vitest'
-import { parseNr } from '../../src/commands'
+import { expect, it } from 'vitest'
+import { parseNyxr } from '../../src/commands'
 
 const agent = 'npm'
-const _ = (arg: string, expected: string) => () => {
-  expect(
-    parseNr(agent, arg.split(' ').filter(Boolean)),
-  ).toBe(
-    expected,
-  )
+function _(arg: string, expected: string) {
+   return () => {
+      expect(
+         parseNyxr(agent, arg.split(' ').filter(Boolean)),
+      ).toBe(
+         expected,
+      )
+   }
 }
 
-test('empty', _('', 'npm run start'))
+it('empty', _('', 'npm run start'))
 
-test('if-present', _('test --if-present', 'npm run --if-present test'))
+it('if-present', _('test --if-present', 'npm run --if-present test'))
 
-test('script', _('dev', 'npm run dev'))
+it('script', _('dev', 'npm run dev'))
 
-test('script with arguments', _('build --watch -o', 'npm run build -- --watch -o'))
+it('script with arguments', _('build --watch -o', 'npm run build -- --watch -o'))
 
-test('colon', _('build:dev', 'npm run build:dev'))
+it('colon', _('build:dev', 'npm run build:dev'))
