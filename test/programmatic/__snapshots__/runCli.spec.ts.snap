@@ -1,0 +1,337 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`lockfile > bun > nyxa 1`] = `"bun"`;
+
+exports[`lockfile > bun > nyxa run foo 1`] = `"bun run foo"`;
+
+exports[`lockfile > bun > nyxi --frozen 1`] = `"bun install --no-save"`;
+
+exports[`lockfile > bun > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > bun > nyxi 1`] = `"bun install"`;
+
+exports[`lockfile > bun > nyxi foo -D 1`] = `"bun add foo -d"`;
+
+exports[`lockfile > bun > nyxi foo 1`] = `"bun add foo"`;
+
+exports[`lockfile > bun > nyxlx 1`] = `"bunx foo"`;
+
+exports[`lockfile > bun > nyxu -i 1`] = `"bun update"`;
+
+exports[`lockfile > bun > nyxu 1`] = `"bun update"`;
+
+exports[`lockfile > bun > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > bun > nyxun foo 1`] = `"bun remove foo"`;
+
+exports[`lockfile > npm > nyxa 1`] = `"npm"`;
+
+exports[`lockfile > npm > nyxa run foo 1`] = `"npm run foo"`;
+
+exports[`lockfile > npm > nyxi --frozen 1`] = `"npm ci"`;
+
+exports[`lockfile > npm > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > npm > nyxi 1`] = `"npm i"`;
+
+exports[`lockfile > npm > nyxi foo -D 1`] = `"npm i foo -D"`;
+
+exports[`lockfile > npm > nyxi foo 1`] = `"npm i foo"`;
+
+exports[`lockfile > npm > nyxlx 1`] = `"npx foo"`;
+
+exports[`lockfile > npm > nyxu -i 1`] = `"Command \\"upgrade-interactive\\" is not support by agent \\"npm\\""`;
+
+exports[`lockfile > npm > nyxu 1`] = `"npm update"`;
+
+exports[`lockfile > npm > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > npm > nyxun foo 1`] = `"npm uninstall foo"`;
+
+exports[`lockfile > pnpm > nyxa 1`] = `"pnpm"`;
+
+exports[`lockfile > pnpm > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`lockfile > pnpm > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`lockfile > pnpm > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > pnpm > nyxi 1`] = `"pnpm i"`;
+
+exports[`lockfile > pnpm > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`lockfile > pnpm > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`lockfile > pnpm > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`lockfile > pnpm > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`lockfile > pnpm > nyxu 1`] = `"pnpm update"`;
+
+exports[`lockfile > pnpm > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > pnpm > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`lockfile > pnpm@6 > nyxa 1`] = `"pnpm"`;
+
+exports[`lockfile > pnpm@6 > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`lockfile > pnpm@6 > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`lockfile > pnpm@6 > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > pnpm@6 > nyxi 1`] = `"pnpm i"`;
+
+exports[`lockfile > pnpm@6 > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`lockfile > pnpm@6 > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`lockfile > pnpm@6 > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`lockfile > pnpm@6 > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`lockfile > pnpm@6 > nyxu 1`] = `"pnpm update"`;
+
+exports[`lockfile > pnpm@6 > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > pnpm@6 > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`lockfile > unknown > nyxa 1`] = `"pnpm"`;
+
+exports[`lockfile > unknown > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`lockfile > unknown > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`lockfile > unknown > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > unknown > nyxi 1`] = `"pnpm i"`;
+
+exports[`lockfile > unknown > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`lockfile > unknown > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`lockfile > unknown > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`lockfile > unknown > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`lockfile > unknown > nyxu 1`] = `"pnpm update"`;
+
+exports[`lockfile > unknown > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > unknown > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`lockfile > yarn > nyxa 1`] = `"yarn"`;
+
+exports[`lockfile > yarn > nyxa run foo 1`] = `"yarn run foo"`;
+
+exports[`lockfile > yarn > nyxi --frozen 1`] = `"yarn install --frozen-lockfile"`;
+
+exports[`lockfile > yarn > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > yarn > nyxi 1`] = `"yarn install"`;
+
+exports[`lockfile > yarn > nyxi foo -D 1`] = `"yarn add foo -D"`;
+
+exports[`lockfile > yarn > nyxi foo 1`] = `"yarn add foo"`;
+
+exports[`lockfile > yarn > nyxlx 1`] = `"npx foo"`;
+
+exports[`lockfile > yarn > nyxu -i 1`] = `"yarn upgrade-interactive"`;
+
+exports[`lockfile > yarn > nyxu 1`] = `"yarn upgrade"`;
+
+exports[`lockfile > yarn > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > yarn > nyxun foo 1`] = `"yarn remove foo"`;
+
+exports[`lockfile > yarn@berry > nyxa 1`] = `"yarn"`;
+
+exports[`lockfile > yarn@berry > nyxa run foo 1`] = `"yarn run foo"`;
+
+exports[`lockfile > yarn@berry > nyxi --frozen 1`] = `"yarn install --frozen-lockfile"`;
+
+exports[`lockfile > yarn@berry > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`lockfile > yarn@berry > nyxi 1`] = `"yarn install"`;
+
+exports[`lockfile > yarn@berry > nyxi foo -D 1`] = `"yarn add foo -D"`;
+
+exports[`lockfile > yarn@berry > nyxi foo 1`] = `"yarn add foo"`;
+
+exports[`lockfile > yarn@berry > nyxlx 1`] = `"npx foo"`;
+
+exports[`lockfile > yarn@berry > nyxu -i 1`] = `"yarn upgrade-interactive"`;
+
+exports[`lockfile > yarn@berry > nyxu 1`] = `"yarn upgrade"`;
+
+exports[`lockfile > yarn@berry > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`lockfile > yarn@berry > nyxun foo 1`] = `"yarn remove foo"`;
+
+exports[`packager > bun > nyxa 1`] = `"bun"`;
+
+exports[`packager > bun > nyxa run foo 1`] = `"bun run foo"`;
+
+exports[`packager > bun > nyxi --frozen 1`] = `"bun install --no-save"`;
+
+exports[`packager > bun > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > bun > nyxi 1`] = `"bun install"`;
+
+exports[`packager > bun > nyxi foo -D 1`] = `"bun add foo -d"`;
+
+exports[`packager > bun > nyxi foo 1`] = `"bun add foo"`;
+
+exports[`packager > bun > nyxlx 1`] = `"bunx foo"`;
+
+exports[`packager > bun > nyxu -i 1`] = `"bun update"`;
+
+exports[`packager > bun > nyxu 1`] = `"bun update"`;
+
+exports[`packager > bun > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > bun > nyxun foo 1`] = `"bun remove foo"`;
+
+exports[`packager > npm > nyxa 1`] = `"npm"`;
+
+exports[`packager > npm > nyxa run foo 1`] = `"npm run foo"`;
+
+exports[`packager > npm > nyxi --frozen 1`] = `"npm ci"`;
+
+exports[`packager > npm > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > npm > nyxi 1`] = `"npm i"`;
+
+exports[`packager > npm > nyxi foo -D 1`] = `"npm i foo -D"`;
+
+exports[`packager > npm > nyxi foo 1`] = `"npm i foo"`;
+
+exports[`packager > npm > nyxlx 1`] = `"npx foo"`;
+
+exports[`packager > npm > nyxu -i 1`] = `"Command \\"upgrade-interactive\\" is not support by agent \\"npm\\""`;
+
+exports[`packager > npm > nyxu 1`] = `"npm update"`;
+
+exports[`packager > npm > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > npm > nyxun foo 1`] = `"npm uninstall foo"`;
+
+exports[`packager > pnpm > nyxa 1`] = `"pnpm"`;
+
+exports[`packager > pnpm > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`packager > pnpm > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`packager > pnpm > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > pnpm > nyxi 1`] = `"pnpm i"`;
+
+exports[`packager > pnpm > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`packager > pnpm > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`packager > pnpm > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`packager > pnpm > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`packager > pnpm > nyxu 1`] = `"pnpm update"`;
+
+exports[`packager > pnpm > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > pnpm > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`packager > pnpm@6 > nyxa 1`] = `"pnpm"`;
+
+exports[`packager > pnpm@6 > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`packager > pnpm@6 > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`packager > pnpm@6 > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > pnpm@6 > nyxi 1`] = `"pnpm i"`;
+
+exports[`packager > pnpm@6 > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`packager > pnpm@6 > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`packager > pnpm@6 > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`packager > pnpm@6 > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`packager > pnpm@6 > nyxu 1`] = `"pnpm update"`;
+
+exports[`packager > pnpm@6 > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > pnpm@6 > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`packager > unknown > nyxa 1`] = `"pnpm"`;
+
+exports[`packager > unknown > nyxa run foo 1`] = `"pnpm run foo"`;
+
+exports[`packager > unknown > nyxi --frozen 1`] = `"pnpm i --frozen-lockfile"`;
+
+exports[`packager > unknown > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > unknown > nyxi 1`] = `"pnpm i"`;
+
+exports[`packager > unknown > nyxi foo -D 1`] = `"pnpm add foo -D"`;
+
+exports[`packager > unknown > nyxi foo 1`] = `"pnpm add foo"`;
+
+exports[`packager > unknown > nyxlx 1`] = `"pnpm dlx foo"`;
+
+exports[`packager > unknown > nyxu -i 1`] = `"pnpm update -i"`;
+
+exports[`packager > unknown > nyxu 1`] = `"pnpm update"`;
+
+exports[`packager > unknown > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > unknown > nyxun foo 1`] = `"pnpm remove foo"`;
+
+exports[`packager > yarn > nyxa 1`] = `"yarn"`;
+
+exports[`packager > yarn > nyxa run foo 1`] = `"yarn run foo"`;
+
+exports[`packager > yarn > nyxi --frozen 1`] = `"yarn install --frozen-lockfile"`;
+
+exports[`packager > yarn > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > yarn > nyxi 1`] = `"yarn install"`;
+
+exports[`packager > yarn > nyxi foo -D 1`] = `"yarn add foo -D"`;
+
+exports[`packager > yarn > nyxi foo 1`] = `"yarn add foo"`;
+
+exports[`packager > yarn > nyxlx 1`] = `"npx foo"`;
+
+exports[`packager > yarn > nyxu -i 1`] = `"yarn upgrade-interactive"`;
+
+exports[`packager > yarn > nyxu 1`] = `"yarn upgrade"`;
+
+exports[`packager > yarn > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > yarn > nyxun foo 1`] = `"yarn remove foo"`;
+
+exports[`packager > yarn@berry > nyxa 1`] = `"yarn"`;
+
+exports[`packager > yarn@berry > nyxa run foo 1`] = `"yarn run foo"`;
+
+exports[`packager > yarn@berry > nyxi --frozen 1`] = `"yarn install --immutable"`;
+
+exports[`packager > yarn@berry > nyxi -g foo 1`] = `"npm i -g foo"`;
+
+exports[`packager > yarn@berry > nyxi 1`] = `"yarn install"`;
+
+exports[`packager > yarn@berry > nyxi foo -D 1`] = `"yarn add foo -D"`;
+
+exports[`packager > yarn@berry > nyxi foo 1`] = `"yarn add foo"`;
+
+exports[`packager > yarn@berry > nyxlx 1`] = `"yarn dlx foo"`;
+
+exports[`packager > yarn@berry > nyxu -i 1`] = `"yarn up -i"`;
+
+exports[`packager > yarn@berry > nyxu 1`] = `"yarn up"`;
+
+exports[`packager > yarn@berry > nyxun -g foo 1`] = `"npm uninstall -g foo"`;
+
+exports[`packager > yarn@berry > nyxun foo 1`] = `"yarn remove foo"`;
